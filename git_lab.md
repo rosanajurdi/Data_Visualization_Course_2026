@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice - PECCHIA Louis -----
+# Git Lab: Hands-On Practice - PECCHIA Louis 
 
 ## Objectives
 By completing this lab, students will:

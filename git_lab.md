@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice
+# Git Lab: Hands-On Practice | DJAMAI CAYOL Naël
 
 ## Objectives
 By completing this lab, students will:

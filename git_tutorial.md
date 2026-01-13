@@ -81,3 +81,57 @@ This ensures you have the latest code, make changes, save them locally, and shar
 |-----------|----------|--------|
 | **Merge** | Combining branches from multiple developers | Creates a merge commit, preserves history |
 | **Rebase** | Cleaning up local commits before pushing | Linear history, cleaner log |
+
+---
+
+## Hands-On Example: Adding course.pdf to the Repo
+
+Here's a practical example of adding a PDF file called `course.pdf` to your repository:
+
+```bash
+# Step 1: Make sure you're up to date with the remote
+git pull origin main
+
+# Step 2: Add the course.pdf file to staging area
+git add course.pdf
+
+# Step 3: Check the status to confirm the file is staged
+git status
+
+# Step 4: Commit the file with a descriptive message
+git commit -m "Add course.pdf - Data Visualization Course materials"
+
+# Step 5: Push the changes to the remote repository
+git push origin main
+```
+
+**Expected output after each command:**
+```
+# After git add course.pdf:
+# (no output means success)
+
+# After git status:
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --cached <file>..." to unstage)
+        new file:   course.pdf
+
+# After git commit:
+[main abc1234] Add course.pdf - Data Visualization Course materials
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 course.pdf
+
+# After git push:
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 456 bytes | 456.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), reused pack 0 (delta 0)
+To github.com:your-username/your-repo.git
+   xyz7890..abc1234 main -> main
+```
+
+The `course.pdf` file is now part of your repository and accessible to all collaborators!

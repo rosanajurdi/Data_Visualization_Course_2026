@@ -1,5 +1,4 @@
-# Git Lab: Hands-On Practice
-
+# Git Lab: Hands-On Practice - Wissem BENAMMAR
 ## Objectives
 By completing this lab, students will:
 - Understand Git workflow and commands

@@ -23,7 +23,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 git config --global user.name  # Verify configuration
 ```
-ffff
+
 ---
 
 ## Exercise 1: Clone and Basic Operations

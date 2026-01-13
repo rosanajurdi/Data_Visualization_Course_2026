@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice JULIEN
+# Git Lab: Hands-On Practice
 
 ## Objectives
 By completing this lab, students will:

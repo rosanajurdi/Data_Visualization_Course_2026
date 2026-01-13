@@ -1,5 +1,5 @@
 
-# Git Lab: Hands-On Practice ibrahim ferdous
+# Git Lab: Hands-On Practice - Solene Emo
 
 ## Objectives
 By completing this lab, students will:

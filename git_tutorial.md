@@ -1,4 +1,4 @@
-# Git Tutorial: Essential Commands
+# Git Tutorial: Essential Commands 1
 
 ## Overview
 Git is a version control system that tracks changes to your code. Here are the core commands you'll use:

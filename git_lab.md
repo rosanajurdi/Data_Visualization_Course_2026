@@ -1,5 +1,5 @@
 
-# Git Lab: Hands-On Practice ibrahim ferdous
+# Git Lab: Thomas Verbois | Hands-On Practice ibrahim ferdous 
 
 ## Objectives
 By completing this lab, students will:

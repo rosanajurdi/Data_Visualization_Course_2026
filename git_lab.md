@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice
+# Git Lab: Hands-On Practice - CORDONNIER ARISTIDE
 
 ## Objectives
 By completing this lab, students will:

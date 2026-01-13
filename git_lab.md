@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice
+# Git Lab: Hands-On Practice | Julien REYNIER
 
 ## Objectives
 By completing this lab, students will:

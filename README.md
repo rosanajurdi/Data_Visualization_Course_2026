@@ -1,4 +1,4 @@
-# Data Visualization Course - README
+# Data Visualization Course - README Julien_REYNIER
 
 ## Course Overview
 This is a comprehensive Data Visualization course covering multiple libraries and techniques for visualizing data in Python.

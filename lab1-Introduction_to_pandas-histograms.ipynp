@@ -1,0 +1,725 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Pandas Data Exploration and Histogram Visualization\n",
+    "\n",
+    "This notebook demonstrates data exploration using Pandas and histogram visualizations using Seaborn and Plotly on the diamonds dataset."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 1 – Load the Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "vscode": {
+     "languageId": "java"
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import required libraries\n",
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "import plotly.express as px\n",
+    "import numpy as np\n",
+    "\n",
+    "# Set display options to show all columns and rows\n",
+    "pd.set_option('display.max_columns', None)\n",
+    "pd.set_option('display.max_rows', 100)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Load CSV from URL"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Load diamonds dataset from URL\n",
+    "url = 'https://raw.githubusercontent.com/TrainingByPackt/Interactive-Data-Visualization-with-Python/master/datasets/diamonds.csv'\n",
+    "diamonds_df = pd.read_csv(url)\n",
+    "print(\"Data loaded successfully from URL!\")\n",
+    "print(f\"Shape: {diamonds_df.shape}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Alternative: Load via Seaborn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Also available via seaborn\n",
+    "diamonds_df_sns = sns.load_dataset('diamonds')\n",
+    "print(\"Data also available via seaborn load_dataset!\")\n",
+    "print(f\"Shape from seaborn: {diamonds_df_sns.shape}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Display the full DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Display full DataFrame\n",
+    "diamonds_df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 2 – Observe and Describe the Data with Pandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Show first 5 rows using head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Show first 5 rows\n",
+    "diamonds_df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Show first 10 rows using head(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Show first 10 rows\n",
+    "diamonds_df.head(10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Get column data types using dtypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Column data types\n",
+    "diamonds_df.dtypes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Get dimensions using shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Dimensions (rows x columns)\n",
+    "diamonds_df.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Get descriptive statistics using describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Descriptive statistics for numeric columns\n",
+    "diamonds_df.describe()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Get general info using info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# General info about the DataFrame\n",
+    "diamonds_df.info()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Check for missing values using isnull().sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Check for missing values\n",
+    "diamonds_df.isnull().sum()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Explanation of Pandas Functions\n",
+    "\n",
+    "**What each function reveals about the data:**\n",
+    "\n",
+    "1. **`head()`** - Shows the first 5 (or specified number of) rows, giving us a quick peek at the data structure, column names, and sample values.\n",
+    "\n",
+    "2. **`dtypes`** - Displays the data type of each column (e.g., int64, float64, object). This helps us understand what kind of data we're working with (numeric vs categorical).\n",
+    "\n",
+    "3. **`shape`** - Returns the dimensions of the DataFrame as (rows, columns). This tells us how much data we have.\n",
+    "\n",
+    "4. **`describe()`** - Provides summary statistics for numeric columns: count, mean, standard deviation, min, max, and quartiles (25%, 50%, 75%). This helps understand the distribution and spread of numerical data.\n",
+    "\n",
+    "5. **`info()`** - Gives a concise summary including the index dtype, column dtypes, non-null counts, and memory usage. It helps identify missing values and data types at a glance.\n",
+    "\n",
+    "6. **`isnull().sum()`** - Counts the number of missing (null) values in each column. This is crucial for data quality assessment before analysis."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 3 – Histograms with Seaborn"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of price"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Histogram of price using sns.histplot()\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.histplot(diamonds_df['price'], kde=False)\n",
+    "plt.title('Histogram of Diamond Price', fontsize=14)\n",
+    "plt.xlabel('Price ($)', fontsize=12)\n",
+    "plt.ylabel('Frequency', fontsize=12)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of carat"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Histogram of carat using sns.histplot()\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.histplot(diamonds_df['carat'], kde=False)\n",
+    "plt.title('Histogram of Diamond Carat', fontsize=14)\n",
+    "plt.xlabel('Carat', fontsize=12)\n",
+    "plt.ylabel('Frequency', fontsize=12)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of price with different bin sizes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Histogram of price with different bin sizes - 3 side by side\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(18, 5))\n",
+    "\n",
+    "# bins=10\n",
+    "sns.histplot(diamonds_df['price'], bins=10, kde=False, ax=axes[0], color='steelblue')\n",
+    "axes[0].set_title('Price Histogram (bins=10)', fontsize=12)\n",
+    "axes[0].set_xlabel('Price ($)')\n",
+    "axes[0].set_ylabel('Frequency')\n",
+    "\n",
+    "# bins=50\n",
+    "sns.histplot(diamonds_df['price'], bins=50, kde=False, ax=axes[1], color='steelblue')\n",
+    "axes[1].set_title('Price Histogram (bins=50)', fontsize=12)\n",
+    "axes[1].set_xlabel('Price ($)')\n",
+    "axes[1].set_ylabel('Frequency')\n",
+    "\n",
+    "# bins=100\n",
+    "sns.histplot(diamonds_df['price'], bins=100, kde=False, ax=axes[2], color='steelblue')\n",
+    "axes[2].set_title('Price Histogram (bins=100)', fontsize=12)\n",
+    "axes[2].set_xlabel('Price ($)')\n",
+    "axes[2].set_ylabel('Frequency')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Comment on how bin size affects interpretation:**\n",
+    "\n",
+    "- **Small number of bins (e.g., 10)**: Shows a very general, smoothed view of the distribution. May hide important details and nuances in the data.\n",
+    "\n",
+    "- **Medium number of bins (e.g., 50)**: Provides a good balance between detail and readability. Often reveals the general shape and any peaks in the distribution.\n",
+    "\n",
+    "- **Large number of bins (e.g., 100)**: Shows fine-grained details and can reveal subtle patterns, gaps, or outliers. However, can also introduce noise and make the overall pattern harder to see.\n",
+    "\n",
+    "Choosing the right bin size is important for accurate data interpretation."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of depth"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Histogram of depth using sns.histplot()\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.histplot(diamonds_df['depth'], kde=False, color='darkgreen')\n",
+    "plt.title('Histogram of Diamond Depth', fontsize=14)\n",
+    "plt.xlabel('Depth (%)', fontsize=12)\n",
+    "plt.ylabel('Frequency', fontsize=12)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of price with distplot (deprecated but included for compatibility)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# sns.distplot() of price with kde=True (normal scale)\n",
+    "# Note: distplot is deprecated but kept for compatibility\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.distplot(diamonds_df['price'], kde=True, bins=50)\n",
+    "plt.title('Distribution Plot of Diamond Price (Normal Scale)', fontsize=14)\n",
+    "plt.xlabel('Price ($)', fontsize=12)\n",
+    "plt.ylabel('Density', fontsize=12)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Histogram of log-transformed price with distplot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# sns.distplot() of log(price) with kde=True (log scale)\n",
+    "plt.figure(figsize=(10, 6))\n",
+    "sns.distplot(np.log(diamonds_df['price']), kde=True, bins=50)\n",
+    "plt.title('Distribution Plot of Log-Transformed Price', fontsize=14)\n",
+    "plt.xlabel('Log(Price)', fontsize=12)\n",
+    "plt.ylabel('Density', fontsize=12)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Using histplot with KDE as alternative to deprecated distplot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Alternative using sns.histplot with kde=True (recommended)\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 5))\n",
+    "\n",
+    "# Price with KDE\n",
+    "sns.histplot(diamonds_df['price'], kde=True, ax=axes[0], color='steelblue')\n",
+    "axes[0].set_title('Price Distribution with KDE', fontsize=12)\n",
+    "axes[0].set_xlabel('Price ($)')\n",
+    "axes[0].set_ylabel('Frequency')\n",
+    "\n",
+    "# Log-transformed price with KDE\n",
+    "sns.histplot(np.log(diamonds_df['price']), kde=True, ax=axes[1], color='coral')\n",
+    "axes[1].set_title('Log-Transformed Price Distribution with KDE', fontsize=12)\n",
+    "axes[1].set_xlabel('Log(Price)')\n",
+    "axes[1].set_ylabel('Frequency')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Analysis Questions\n",
+    "\n",
+    "**1. Why apply log transformation to 'price'?**\n",
+    "\n",
+    "Log transformation is applied to 'price' because the price distribution is typically right-skewed (long tail towards higher prices). The log transformation helps:\n",
+    "- Make the distribution more symmetric (closer to normal)\n",
+    "- Reduce the impact of extreme values/outliers\n",
+    "- Stabilize variance (homoscedasticity)\n",
+    "- Reveal hidden patterns that are not visible in the original scale\n",
+    "\n",
+    "**2. What does the log-transformed histogram reveal?**\n",
+    "\n",
+    "The log-transformed histogram reveals a more symmetric, bell-shaped distribution. It shows that the data is actually multi-modal (has multiple peaks), which suggests there may be distinct price clusters or categories in the data (possibly related to different diamond qualities or sizes).\n",
+    "\n",
+    "**3. What are the approximate peaks in the log distribution and what do they suggest?**\n",
+    "\n",
+    "The log-transformed price distribution typically shows 2-3 distinct peaks:\n",
+    "- A major peak around log(price) ≈ 7-8 (roughly $1,000-$3,000)\n",
+    "- A secondary peak at higher values\n",
+    "- These peaks suggest distinct price segments/market categories for diamonds\n",
+    "\n",
+    "**4. What are the 3 main characteristics of a distribution identifiable from a histogram?**\n",
+    "\n",
+    "1. **Shape**: The overall form - whether it's symmetric, skewed left/right, uniform, or multi-modal\n",
+    "2. **Center**: The central tendency - where the bulk of the data is concentrated (visible through peaks)\n",
+    "3. **Spread**: The variability or dispersion - how spread out the data is (width of the distribution)\n",
+    "\n",
+    "**5. How does bin size choice influence histogram interpretation?**\n",
+    "\n",
+    "- Too few bins: Can obscure important patterns and details\n",
+    "- Too many bins: Can introduce noise and make patterns hard to see\n",
+    "- Optimal bin size: Reveals the true underlying distribution shape without overfitting or underfitting\n",
+    "- Rule of thumb: Start with Sturges' rule or try multiple bin sizes to find the best balance"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 4 – Histograms with Plotly"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Interactive Histogram of price"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of price using px.histogram()\n",
+    "fig = px.histogram(diamonds_df, x='price', \n",
+    "                    title='Interactive Histogram of Diamond Price',\n",
+    "                    labels={'price': 'Price ($)'})\n",
+    "fig.update_layout(xaxis_title='Price ($)', yaxis_title='Frequency')\n",
+    "fig.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Interactive Histogram of carat"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of carat using px.histogram()\n",
+    "fig = px.histogram(diamonds_df, x='carat', \n",
+    "                    title='Interactive Histogram of Diamond Carat',\n",
+    "                    labels={'carat': 'Carat Weight'})\n",
+    "fig.update_layout(xaxis_title='Carat', yaxis_title='Frequency')\n",
+    "fig.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Interactive Histogram of price with different nbins"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of price with nbins=10\n",
+    "fig1 = px.histogram(diamonds_df, x='price', nbins=10,\n",
+    "                     title='Interactive Histogram of Price (10 bins)',\n",
+    "                     labels={'price': 'Price ($)'})\n",
+    "fig1.update_layout(xaxis_title='Price ($)', yaxis_title='Frequency')\n",
+    "fig1.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of price with nbins=50\n",
+    "fig2 = px.histogram(diamonds_df, x='price', nbins=50,\n",
+    "                     title='Interactive Histogram of Price (50 bins)',\n",
+    "                     labels={'price': 'Price ($)'})\n",
+    "fig2.update_layout(xaxis_title='Price ($)', yaxis_title='Frequency')\n",
+    "fig2.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of price with nbins=100\n",
+    "fig3 = px.histogram(diamonds_df, x='price', nbins=100,\n",
+    "                     title='Interactive Histogram of Price (100 bins)',\n",
+    "                     labels={'price': 'Price ($)'})\n",
+    "fig3.update_layout(xaxis_title='Price ($)', yaxis_title='Frequency')\n",
+    "fig3.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Interactive Histogram of depth"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of depth using px.histogram()\n",
+    "fig = px.histogram(diamonds_df, x='depth', \n",
+    "                    title='Interactive Histogram of Diamond Depth',\n",
+    "                    labels={'depth': 'Depth (%)'})\n",
+    "fig.update_layout(xaxis_title='Depth (%)', yaxis_title='Frequency')\n",
+    "fig.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Interactive Histogram of log-transformed price"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Interactive histogram of log-transformed price\n",
+    "fig = px.histogram(diamonds_df, x=np.log(diamonds_df['price']), \n",
+    "                    title='Interactive Histogram of Log-Transformed Price',\n",
+    "                    labels={'x': 'Log(Price)'})\n",
+    "fig.update_layout(xaxis_title='Log(Price)', yaxis_title='Frequency')\n",
+    "fig.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Plotly vs Seaborn Comparison for Histograms\n",
+    "\n",
+    "**Interactivity:**\n",
+    "- **Plotly**: Provides fully interactive histograms with hover tooltips, zoom, pan, and the ability to export as HTML or PNG. Users can click legend items to toggle visibility.\n",
+    "- **Seaborn**: Creates static matplotlib figures. No built-in interactivity (though can be made interactive with matplotlib widgets).\n",
+    "\n",
+    "**Syntax:**\n",
+    "- **Plotly**: More concise syntax with `px.histogram()`. Easy to create complex visualizations with less code. The `nbins` parameter directly controls the approximate number of bins.\n",
+    "- **Seaborn**: Uses `sns.histplot()` with `bins` parameter for exact bin count. Integrates well with matplotlib's figure-level and axis-level functions.\n",
+    "\n",
+    "**Ease of Use:**\n",
+    "- **Plotly**: Very easy for quick exploratory data analysis. The figures are self-contained and interactive by default. Great for web applications and dashboards.\n",
+    "- **Seaborn**: Better integrated with the Python scientific stack (pandas, matplotlib). Easier to customize for publication-quality static figures. More control over fine-grained visual details.\n",
+    "\n",
+    "**Best Use Cases:**\n",
+    "- **Plotly**: When sharing analysis online, creating dashboards, or when user interactivity is needed.\n",
+    "- **Seaborn**: When creating figures for papers, reports, or when combining with other matplotlib-based visualizations."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Summary\n",
+    "\n",
+    "This notebook covered:\n",
+    "1. **Data Loading**: Loading the diamonds dataset from URL and via seaborn\n",
+    "2. **Data Exploration**: Using pandas functions (head, dtypes, shape, describe, info, isnull) to understand the data\n",
+    "3. **Seaborn Histograms**: Creating various histogram visualizations with different bin sizes, including KDE plots and log-transformed distributions\n",
+    "4. **Plotly Histograms**: Creating interactive histograms with Plotly Express, demonstrating the interactivity advantages over static plots\n",
+    "\n",
+    "Key insights from the diamonds data:\n",
+    "- The dataset contains ~54,000 diamond records with 10 features\n",
+    "- Price is right-skewed; log transformation reveals multiple price clusters\n",
+    "- Carat shows a distribution with common weights around 0.7-1.0\n",
+    "- Depth is approximately normally distributed around 61-62%"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

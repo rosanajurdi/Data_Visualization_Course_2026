@@ -1,4 +1,4 @@
-# Git Lab: Hands-On Practice
+# Git Lab: Hands-On Practice GIL mathis
 
 ## Objectives
 By completing this lab, students will:

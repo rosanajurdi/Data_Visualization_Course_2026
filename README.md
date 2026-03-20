@@ -1,4 +1,5 @@
 # Data Visualization Course - README
+Badr EL MAFTAH
 
 ## Course Overview
 This is a comprehensive Data Visualization course covering multiple libraries and techniques for visualizing data in Python.

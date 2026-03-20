@@ -1,5 +1,7 @@
 # Data Visualization Course - README
 
+# Author : EMO Solène
+
 ## Course Overview
 This is a comprehensive Data Visualization course covering multiple libraries and techniques for visualizing data in Python.
 
